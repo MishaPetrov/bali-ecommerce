@@ -1,11 +1,17 @@
 <h1>Shopping Cart</h1>
 
+
 <% if @order_items.any? %>
-  <% @order_items.each do |item| %>
-    <p><%= item.product.name %> | <%= link_to "Delete", order_item_path(item), :data => {:confirm => "You sure?", :method => "delete"} %></p>
-    <p> Unit Price: <%= number_to_currency item.product.price %> | Quantity: <%= item.quantity %> | Total Price: <%= number_to_currency (item.product.price * item.quantity) %></p>
-  <% end %>
-  <p>Your Total: <%= number_to_currency current_order.total_price %></p>
+  <ul class="collection with-header">
+    <li class="collection-header"><h4>Cart</h4></li>
+    <% @order_items.each do |item| %>
+      <li class="collection-item" id="delete_item_<%= item.id %>">
+      <%= item.product.name %> | <%= link_to "Delete", order_item_path(item),remote:true, :data => {:confirm => "You sure?", :method => "delete"} %></p>
+      <p> Unit Price: <%= number_to_currency item.product.price %> | Quantity: <%= item.quantity %> | Total Price: <%= number_to_currency (item.product.price * item.quantity) %></p>
+      </li>
+    <% end %>
+  </ul>
+  <%= render('layouts/cart_total') %>
   <p><%= link_to "Finalize order", finalize_path %></p>
 <% else %>
   <p>Your shopping cart is empty.</p>
