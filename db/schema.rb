@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170412212644) do
+ActiveRecord::Schema.define(version: 20180508042205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "doctors", force: :cascade do |t|
+    t.string "name"
+    t.string "specialty"
+  end
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "quantity"
@@ -26,10 +31,17 @@ ActiveRecord::Schema.define(version: 20170412212644) do
   create_table "orders", force: :cascade do |t|
     t.string   "total_price"
     t.string   "decimal"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "user_id"
-    t.integer  "status"
+    t.integer  "status",      default: 1
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "ssn"
+    t.datetime "birthday"
+    t.integer  "doctor_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -38,6 +50,11 @@ ActiveRecord::Schema.define(version: 20170412212644) do
     t.decimal  "price"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "img"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,6 +64,11 @@ ActiveRecord::Schema.define(version: 20170412212644) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.boolean  "admin",           default: false
+  end
+
+  create_table "volunteers", force: :cascade do |t|
+    t.string  "name"
+    t.integer "project_id"
   end
 
 end
