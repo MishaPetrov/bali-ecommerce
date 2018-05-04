@@ -10,7 +10,6 @@
   <nav>
     <div class="nav-wrapper">
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><%= link_to "Cart | Total items: #{ cart_items }", cart_path %></li>
         <li><%= link_to "See all products", products_path %></li>
         <% if current_user %>
           <li><%= current_user.email %></li>
@@ -19,6 +18,7 @@
           <li><%= link_to "Sign up", 'sign_up' %></li>
           <li><%= link_to "Sign in", '/sign_in' %></li>
         <% end %>
+        <li><%= link_to "Cart | Total items: ", cart_path %></li><%= render('layouts/cart_count') %>
       </ul>
     </div>
   </nav>
