@@ -2,6 +2,7 @@
 
   <%= form_for @product do |f| %>
     Name: <%= f.text_field :name %>
+    Image URL <%= f.text_field :img %>
     Description: <%= f.text_field :description %>
     Password: <%= f.number_field :price %>
   <%= f.submit "Submit" %>

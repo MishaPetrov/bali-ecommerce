@@ -23,8 +23,10 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       redirect_to '/'
+      flash[:notice] = "Product created successfully."
     else
       render :new
+      flash[:notice] = "Something went wrong. Try again."
     end
   end
 
