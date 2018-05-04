@@ -16,6 +16,10 @@
 
 @import "materialize";
 
+.container {
+  width: 80vw !important;
+}
+
 nav {
   padding-right: 40px;
 }
@@ -26,4 +30,13 @@ nav {
 
 .product-description {
   display: none;
+}
+
+.cards-container {
+  column-break-inside: avoid;
+  .card {
+    display: inline-block;
+    overflow: visible;
+    margin: 10px;
+  }
 }
