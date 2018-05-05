@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508055917) do
+ActiveRecord::Schema.define(version: 20180508072146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 20180508055917) do
     t.string   "name"
     t.text     "description"
     t.money    "price",       scale: 2
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.string   "img"
+    t.datetime "created_at",                                                                                                                null: false
+    t.datetime "updated_at",                                                                                                                null: false
+    t.string   "img",                   default: "https://blog.stylingandroid.com/wp-content/themes/lontano-pro/images/no-image-slide.png"
   end
 
   create_table "projects", force: :cascade do |t|
